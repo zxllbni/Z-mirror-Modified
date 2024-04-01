@@ -19,7 +19,7 @@ aria2 = ariaAPI(ariaClient(host="http://localhost", port=6800, secret=""))
 
 LOGGER = getLogger(__name__)
 
-rawowners = "<h1 style='text-align: center'>See my Channel <a href='https://telegram.me/z_mirror'>@Telegram</a><br><br>By<br><br><a href='https://github.com/Dawn-India/Z-Mirror'>Z-Mirror</a></h1>"
+rawowners = "<h1 style='text-align: center'>See my Channel <a href='https://telegram.me/JetMirror'>@Telegram</a><br><br>By<br><br><a href='https://github.com/Hrishi2861'>Jet-Mirror</a></h1>"
 
 pin_entry = '''
     <section>
@@ -69,6 +69,7 @@ rawindexpage = '''
     <script src="//cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1383801740276166" crossorigin="anonymous"></script>
     <style>
         /* style1 */
         /* style2 */
@@ -83,8 +84,8 @@ rawindexpage = '''
         </div>
         <h2 class="name">Qbittorrent Selection</h2>
         <div class="social">
-            <a href="https://www.github.com/Dawn-India/Z-Mirror"><i class="fab fa-github"></i></a>
-            <a href="https://telegram.me/Z_Mirror"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.telegram.me/JetMirror"><i class="fab fa-telegram-group"></i></a>
+            <a href="https://telegram.me/hrishikesh2861"><i class="fab fa-telegram"></i></a>
         </div>
     </header>
     <!-- pin_entry -->
@@ -327,6 +328,13 @@ rawindexpage = '''
         });
     </script>
 </body>
+
+<footer style="height: 30%;">
+    <iframe data-aa="1856195"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1383801740276166?size=Adaptive&background_color=0d1117&title_color=ffffff&link_color=ffffff"
+        style="border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;">
+    </iframe>
+</footer>
 
 </html>
 '''
