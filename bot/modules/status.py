@@ -3,7 +3,7 @@ from time import time
 from datetime import datetime as dt
 from httpx import AsyncClient as xclient
 from aiofiles.os import path as aiopath
-
+#import asyncio
 from psutil import boot_time, cpu_count, cpu_freq, cpu_percent, disk_usage, swap_memory, virtual_memory, net_io_counters
 from pyrogram.filters import command, regex
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
@@ -21,6 +21,9 @@ from bot.helper.telegram_helper.message_utils import (auto_delete_message, delet
 
 @new_task
 async def mirror_status(_, message):
+    #sticker_message = await message.reply_sticker("CAACAgIAAxkBAAEXzJtlezBU92o9SmsFleHxnuyQWpkHnQACogEAAjDUnRH1ZwABIuJAFVczBA")
+    #await asyncio.sleep(2)
+    #await sticker_message.delete()
     async with download_dict_lock:
         count = len(download_dict)
     if count == 0:
@@ -29,7 +32,8 @@ async def mirror_status(_, message):
         msg = '<b>Uninstall Telegram and enjoy your life!</b>'
         msg += '\n\nNo Active Tasks!\n___________________________'
         msg += f"\n<b>CPU</b>: {cpu_percent()}% | <b>FREE</b>: {free}" \
-               f"\n<b>RAM</b>: {virtual_memory().percent}% | <b>UPTIME</b>: {currentTime}"
+               f"\n<b>RAM</b>: {virtual_memory().percent}% | <b>UPTIME</b>: {currentTime}" \
+               f"\n\n<a href='https://t.me/JetMirror'>𝑩𝒐𝒕 𝒃𝒚 🚀 𝑱𝒆𝒕-𝑴𝒊𝒓𝒓𝒐𝒓</a>"
         reply_message = await sendMessage(message, msg)
         await auto_delete_message(message, reply_message)
     else:
@@ -85,7 +89,7 @@ def bot_sys_stats():
             extr += 1
         elif status == MirrorStatus.STATUS_SEEDING:
             seed += 1
-    bmsg = f'______Zee Bot Info______\n\n'
+    bmsg = f'______🚀Jet Bot Info______\n\n'
     bmsg += f'C: {cpup}% | R: {ramp}% | D: {disk}%\n\n'
     bmsg += f'T : {totl} | F : {free} | Q : {inqu}\n'
     bmsg += f'DL: {dwld} | UL: {upld} | SD: {seed}\n'
@@ -116,7 +120,7 @@ async def stats(_, message, edit_mode=False):
     mem_p       = memory.percent
     swap        = swap_memory()
 
-    bot_stats = f'<b><i><u>Zee Bot Statistics</u></i></b>\n\n'\
+    bot_stats = f'<b><i><u>🚀Jet Bot Statistics</u></i></b>\n\n'\
                 f'<code>CPU  : </code>{get_progress_bar_string(cpuUsage)} {cpuUsage}%\n' \
                 f'<code>RAM  : </code>{get_progress_bar_string(mem_p)} {mem_p}%\n' \
                 f'<code>SWAP : </code>{get_progress_bar_string(swap.percent)} {swap.percent}%\n' \
@@ -124,9 +128,10 @@ async def stats(_, message, edit_mode=False):
                 f'<code>Bot Uptime      : </code> {botTime}\n' \
                 f'<code>Uploaded        : </code> {sent}\n' \
                 f'<code>Downloaded      : </code> {recv}\n' \
-                f'<code>Total Bandwidth : </code> {tb}'
+                f'<code>Total Bandwidth : </code> {tb}' \
+                f'\n\n<a href="https://t.me/JetMirror">𝑩𝒐𝒕 𝒃𝒚 🚀 𝑱𝒆𝒕-𝑴𝒊𝒓𝒓𝒐𝒓</a>'
 
-    sys_stats = f'<b><i><u>Zee System Statistics</u></i></b>\n\n'\
+    sys_stats = f'<b><i><u>🚀Jet System Statistics</u></i></b>\n\n'\
                 f'<b>System Uptime:</b> <code>{sysTime}</code>\n' \
                 f'<b>CPU:</b> {get_progress_bar_string(cpuUsage)}<code> {cpuUsage}%</code>\n' \
                 f'<b>CPU Total Core(s):</b> <code>{cpu_count(logical=True)}</code>\n' \
@@ -140,7 +145,8 @@ async def stats(_, message, edit_mode=False):
                 f'<b>Total</b> <code>{get_readable_file_size(swap.total)}</code> | ' \
                 f'<b>Free:</b> <code>{get_readable_file_size(swap.free)}</code>\n\n' \
                 f'<b>DISK:</b> {get_progress_bar_string(disk)}<code> {disk}%</code>\n' \
-                f'<b>Total:</b> <code>{total}</code> | <b>Free:</b> <code>{free}</code>'
+                f'<b>Total:</b> <code>{total}</code> | <b>Free:</b> <code>{free}</code>' \
+                f'\n\n<a href="https://t.me/JetMirror">𝑩𝒐𝒕 𝒃𝒚 🚀 𝑱𝒆𝒕-𝑴𝒊𝒓𝒓𝒐𝒓</a>'
 
     buttons.ibutton("Sys Stats",  "show_sys_stats")
     buttons.ibutton("Repo Stats", "show_repo_stats")
@@ -252,7 +258,7 @@ async def send_bot_limits(_, query):
     UMT = 'Unlimited' if config_dict['USER_MAX_TASKS']  == '' else config_dict['USER_MAX_TASKS']
     BMT = 'Unlimited' if config_dict['QUEUE_ALL']       == '' else config_dict['QUEUE_ALL']
 
-    bot_limit = f'<b><i><u>Zee Bot Limitations</u></i></b>\n' \
+    bot_limit = f'<b><i><u>🚀Jet Bot Limitations</u></i></b>\n' \
                 f'<code>Torrent   : {TOR}</code> <b>GB</b>\n' \
                 f'<code>G-Drive   : {GDL}</code> <b>GB</b>\n' \
                 f'<code>Yt-Dlp    : {YTD}</code> <b>GB</b>\n' \
@@ -262,7 +268,8 @@ async def send_bot_limits(_, query):
                 f'<code>Leech     : {TGL}</code> <b>GB</b>\n' \
                 f'<code>MEGA      : {MGA}</code> <b>GB</b>\n\n' \
                 f'<code>User Tasks: {UMT}</code>\n' \
-                f'<code>Bot Tasks : {BMT}</code>'
+                f'<code>Bot Tasks : {BMT}</code>' \
+                f'\n\n<a href="https://t.me/JetMirror">𝑩𝒐𝒕 𝒃𝒚 🚀 𝑱𝒆𝒕-𝑴𝒊𝒓𝒓𝒐𝒓</a>'
 
     buttons.ibutton("Bot Stats",  "show_bot_stats")
     buttons.ibutton("Sys Stats",  "show_sys_stats")
