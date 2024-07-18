@@ -61,11 +61,11 @@ async def start(_, message):
     elif config_dict['DM_MODE'] and message.chat.type != message.chat.type.SUPERGROUP:
         start_string = 'Bot Started.\n' \
                        'Now I will send all of your stuffs here.\n' \
-                       'Use me at: @JetMirror \n' \
+                       'Use me at: @L_abani \n' \
                        'Repo: @Z_Mirror'
     elif not config_dict['DM_MODE'] and message.chat.type != message.chat.type.SUPERGROUP:
         start_string = 'Sorry, you cannot use me here!\n' \
-                       'Join: @JetMirror to use me.\n' \
+                       'Join: @L_abani to use me.\n' \
                        'Thank You.\n' \
                        'Repo: @Z_Mirror'
     else:
